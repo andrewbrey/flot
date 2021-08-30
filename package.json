@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "nextron",
     "build": "nextron build",
+    "release": "nextron build --publish always",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
