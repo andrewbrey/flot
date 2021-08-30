@@ -1,0 +1,40 @@
+appId: page.flot
+productName: Flōt
+copyright: Copyright © 2021 Andrew Brey
+directories:
+  output: dist
+  buildResources: resources
+mac:
+  target: dmg
+  type: distribution
+  artifactName: Flot.setup.${version}.${ext}
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+win:
+  target: nsis
+  publisherName: Andrew Brey
+  rfc3161TimeStampServer: http://timestamp.digicert.com
+nsis:
+  artifactName: Flot.setup.${version}.${ext}
+linux:
+  target: AppImage
+  category: Utility
+  artifactName: Flot-${version}.${ext}
+  synopsis: Open websites in a floating window
+  desktop:
+    Name: Flot
+    Type: Application
+    Categories: Utility
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish:
+  provider: github
+  owner: andrewbrey
+  repo: flot
+  private: false
+  releaseType: draft

@@ -1,0 +1,78 @@
+/*****************************
+ * Global (non-feature) styles
+ *****************************/
+:root {
+  --flot-scrollbar-color: rgba(141, 141, 141, 0.75);
+  --flot-scrollbar-color-hover: rgb(172, 172, 172);
+  --flot-scrollbar-track-color: rgba(0, 0, 0, 0.25);
+  --flot-scrollbar-width: 10px;
+  --flot-scrollbar-border-width: 2px;
+  --flot-scrollbar-radius: 10px;
+}
+
+.flotapp {
+  background: #000 !important;
+  background-color: #000 !important;
+}
+
+.flotapp ::-webkit-scrollbar {
+  width: var(--flot-scrollbar-width) !important;
+}
+
+.flotapp ::-webkit-scrollbar:horizontal {
+  height: var(--flot-scrollbar-width) !important;
+}
+
+.flotapp ::-webkit-scrollbar-track {
+  background-color: var(--flot-scrollbar-track-color) !important;
+}
+
+.flotapp ::-webkit-scrollbar-thumb {
+  background-color: var(--flot-scrollbar-color) !important;
+  border-radius: var(--flot-scrollbar-radius) !important;
+  border: var(--flot-scrollbar-border-width) solid transparent !important;
+  background-clip: content-box !important;
+}
+
+.flotapp ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--flot-scrollbar-color-hover) !important;
+}
+
+.flotapp ::-webkit-scrollbar-corner {
+  background-color: transparent !important;
+}
+
+/*****************************
+ * Video css (experimental)
+ *****************************/
+.flotapp.flot-video video,
+.flotapp.flot-video video::before,
+.flotapp.flot-video video::after {
+  position: fixed !important;
+  display: block !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.flotapp.flot-video video {
+  object-fit: contain !important;
+  isolation: isolate !important;
+  visibility: visible !important;
+  overflow: visible !important;
+}
+
+.flotapp.flot-video video::before,
+.flotapp.flot-video video::after {
+  content: '' !important;
+  background: #000 !important;
+}
+
+.flotapp.flot-video :not(video) {
+  height: 0 !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+}

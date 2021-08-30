@@ -1,0 +1,60 @@
+name: Build Flot App
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: 'bash'
+
+jobs:
+  build:
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && contains(toJson(github.event.commits), '[skip ci]') == false
+    name: cicd
+    strategy:
+      matrix:
+        include:
+          - platform: linux
+            os: 'ubuntu-18.04'
+          - platform: windows
+            os: 'windows-2019'
+          - platform: mac
+            os: 'macos-10.15'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Ensure yarn available
+        run: |
+          if ! command -v yarn &> /dev/null
+          then
+              echo "yarn could not be found, installing it"
+              npm i -g yarn
+          fi
+
+      - name: Get yarn cache directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: yarn install --frozen-lockfile --network-timeout 300000
+
+      - run: yarn run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # APPLE_ID: ${{ secrets.APPLE_ID }}
+          # APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          # CSC_LINK: ${{ secrets.CSC_LINK }}
+          # CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          # WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+          # WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
