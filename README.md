@@ -47,6 +47,20 @@ Top feature: It's simple and works like a charm ❤️
   the window below
 - Simple and clean design with just the cutest little logo drawn by my wife
 
+# Screenshots
+
+|                                                   |                                                              |
+| :-----------------------------------------------: | :----------------------------------------------------------: |
+| ![Home](./website/images/screenshots/01_home.png) | ![Settings 1](./website/images/screenshots/02_settings1.png) |
+
+|                                                              |                                                                |
+| :----------------------------------------------------------: | :------------------------------------------------------------: |
+| ![Settings 2](./website/images/screenshots/03_settings2.png) | ![See Through](./website/images/screenshots/04_seethrough.png) |
+
+|                                                           |
+| :-------------------------------------------------------: |
+| ![Detached](./website/images/screenshots/05_detached.png) |
+
 ## License
 
 [MIT](./LICENSE). Copyright (c) [Andrew Brey](https://andrewbrey.com)

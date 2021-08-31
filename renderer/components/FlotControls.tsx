@@ -54,6 +54,10 @@ function FlotControls() {
   const handleUrlInputKeypress: KeyboardEventHandler<HTMLInputElement> = debounce((e) => {
     switch (e.keyCode) {
       case 8: // Backspace
+      case 13: // Return
+      case 17: // Ctrl
+      case 91: // Cmd left
+      case 93: // Cmd right
         updateURL(urlInput.current?.value ?? '');
         break;
       default:
