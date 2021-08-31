@@ -49,4 +49,4 @@ Top feature: It's simple and works like a charm ❤️
 
 ## License
 
-[MIT](./LICESNSE). Copyright (c) [Andrew Brey](https://andrewbrey.com)
+[MIT](./LICENSE). Copyright (c) [Andrew Brey](https://andrewbrey.com)
