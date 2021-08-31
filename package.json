@@ -2,7 +2,7 @@
   "private": true,
   "name": "Flot",
   "description": "Open websites in a floating window",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": {
     "name": "Andrew Brey",
     "email": "34140052+andrewbrey@users.noreply.github.com"
