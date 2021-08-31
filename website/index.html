@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="antialiased h-full w-full overflow-hidden bg-teal-500">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,5 +12,17 @@
     <link rel="icon" href="/images/icons/icon.ico" />
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body class="bg-teal-50"></body>
+  <body class="h-full w-full overflow-hidden relative">
+    <div
+      class="fixed bottom-0 w-full h-1/2 bg-cover bg-center bg-no-repeat z-10 overflow-hidden"
+      style="background-image: url('/images/clouds.svg')"
+    ></div>
+    <div class="fixed bottom-1/4 w-full z-0">
+      <img
+        src="/images/ship_with_sign.png"
+        alt=""
+        class="max-w-sm md:max-w-5xl inline-block object-contain animate-flot"
+      />
+    </div>
+  </body>
 </html>

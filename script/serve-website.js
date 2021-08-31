@@ -8,6 +8,7 @@ const options = {
   open: true,
   file: 'index.html',
   watch: path.join(__dirname, '..', 'website'),
+  noCssInject: true,
 };
 
 server.start(options);
