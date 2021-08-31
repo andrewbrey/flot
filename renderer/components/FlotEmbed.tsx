@@ -4,9 +4,12 @@ import { useStore } from '../store';
 import FlotPlaceholder from './FlotPlaceholder';
 
 function FlotEmbed() {
+  const [firstLoad, setFirstLoad] = React.useState(false);
   const url = useStore((state) => state.url);
   const childLoading = useStore((state) => state.childLoading);
   const setChildLoading = useStore((state) => state.setChildLoading);
+
+  React.useEffect(() => setFirstLoad(true), []);
 
   React.useEffect(() => {
     if (url) setChildLoading(true);
@@ -18,7 +21,7 @@ function FlotEmbed() {
 
   return (
     <React.Fragment>
-      {url ? (
+      {firstLoad && url ? (
         <React.Fragment>
           <iframe
             name="flot-embed"

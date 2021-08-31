@@ -18,7 +18,7 @@ interface FlotState {
 let unlockTimeout: NodeJS.Timeout | null = null;
 
 export const useStore = create<FlotState>((set, get) => ({
-  url: '',
+  url: typeof window === 'undefined' ? '' : localStorage.getItem('flot-last-url') ?? '',
   setUrl: (nextUrl: string) => {
     if (get().urlLocked) {
       console.log('%cSkipping attempt to set the url when it is not possible to do so', 'color:blue;');
@@ -26,6 +26,7 @@ export const useStore = create<FlotState>((set, get) => ({
       let target = (nextUrl ?? '').trim();
 
       if (!target) {
+        if (typeof window !== 'undefined') localStorage.setItem('flot-last-url', '');
         set(() => ({ url: '' }));
       } else {
         try {

@@ -23,10 +23,6 @@ if (isLinux) {
   app.commandLine.appendSwitch('use-gl', 'desktop');
 }
 
-if (isMac) {
-  app?.dock.hide();
-}
-
 if (isProd) {
   serve({ directory: 'app' });
 } else {
@@ -54,7 +50,7 @@ if (isProd) {
     title: 'Flōt',
     titleBarStyle: undefined,
     trafficLightPosition: undefined,
-    skipTaskbar: true,
+    skipTaskbar: false,
     frame: false,
     maximizable: false,
     fullscreenable: false,
@@ -69,6 +65,8 @@ if (isProd) {
     icon: join(__dirname, 'images', 'logo', '256x256.png'),
     alwaysOnTop: true,
   });
+
+  mainWindow.setVisibleOnAllWorkspaces(true);
 
   mainWindow.webContents.on(
     'did-fail-provisional-load',

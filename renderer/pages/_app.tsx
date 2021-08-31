@@ -1,4 +1,3 @@
-import { throttle } from 'lodash';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import { useStore } from '../store';
@@ -16,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         switch (key) {
           case 'location':
-            console.log(`iframe successfully navigated to ${msg}`);
+            if (typeof window !== 'undefined') localStorage.setItem('flot-last-url', msg);
             break;
           case 'active':
             useStore.setState({ childActive: msg });
