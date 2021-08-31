@@ -130,7 +130,7 @@ function FlotControls() {
           />
         </div>
 
-        <Disclosure as="div" className="relative w-full" defaultOpen={true}>
+        <Disclosure as="div" className="relative w-full">
           {({ close }) => (
             <React.Fragment>
               <Disclosure.Button
