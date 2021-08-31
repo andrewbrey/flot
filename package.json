@@ -16,6 +16,9 @@
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
+    "tw": "npx tailwindcss -i ./renderer/styles/globals.css -c ./website/tailwind.config.js -o ./website/index.css --watch --minify",
+    "srv": "node script/serve-website.js",
+    "web": "NODE_ENV=production concurrently --kill-others npm:tw npm:srv",
     "build": "nextron build",
     "release": "nextron build --publish always",
     "postinstall": "electron-builder install-app-deps"
@@ -41,8 +44,10 @@
     "@types/node-fetch": "2.5.12",
     "@types/react": "^17.0.19",
     "autoprefixer": "^10.3.3",
+    "concurrently": "6.2.1",
     "electron": "^13.2.3",
     "electron-builder": "^22.11.7",
+    "live-server": "1.2.1",
     "next": "11.1.0",
     "nextron": "^7.0.0",
     "postcss": "^8.3.6",
