@@ -135,6 +135,8 @@ ipc.answerRenderer('please-disable-video-css', () => {
   getFlotEmbed()?.executeJavaScript(videoCSSOffScript);
   experimentalVideoCSS = false;
 });
+ipc.answerRenderer('please-detach', () => mainWindow?.setIgnoreMouseEvents(true));
+ipc.answerRenderer('please-attach', () => mainWindow?.setIgnoreMouseEvents(false));
 ipc.answerRenderer('please-quit', () => app.quit());
 
 app.on('window-all-closed', () => app.quit());

@@ -40,8 +40,20 @@ function FlotControls() {
   };
 
   const handleUrlInputKeypress: KeyboardEventHandler<HTMLInputElement> = debounce((e) => {
-    e.preventDefault();
-    updateURL(urlInput.current?.value ?? '');
+    switch (e.keyCode) {
+      case 8: // Backspace
+        updateURL(urlInput.current?.value ?? '');
+        break;
+      default:
+        // https://stackoverflow.com/a/1547940
+        const newUrlKeys = new RegExp("^[a-zA-Z0-9-._~:/?#\\[\\]@!$&'()*+,;=]$");
+        const key = e.key;
+
+        if (newUrlKeys.test(key)) {
+          updateURL(urlInput.current?.value ?? '');
+        }
+        break;
+    }
   }, 750);
 
   const handleVideoCssChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -125,7 +137,7 @@ function FlotControls() {
                       name="frame-opacity-option"
                       type="range"
                       min={5}
-                      max={95}
+                      max={100}
                       step={1}
                       defaultValue={opacity}
                       ref={opacityInput}
