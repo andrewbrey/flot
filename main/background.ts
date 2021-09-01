@@ -64,6 +64,7 @@ if (isProd) {
     maxWidth: 1000,
     icon: join(__dirname, 'images', 'logo', '256x256.png'),
     alwaysOnTop: true,
+    hasShadow: false,
   });
 
   mainWindow.setVisibleOnAllWorkspaces(true);
