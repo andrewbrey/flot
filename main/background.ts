@@ -8,7 +8,6 @@ import { createWindow } from './helpers';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 const isLinux = process.platform === 'linux';
-const isMac = process.platform === 'darwin';
 
 const port = process.argv[2];
 const devURL = `http://localhost:${port}`;
