@@ -75,13 +75,26 @@
           </div>
         </div>
 
-        <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+        <main class="mt-8 sm:mt-12 mx-auto max-w-7xl px-4 md:mt-24">
           <div class="text-center">
             <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span class="block xl:inline">Always on top, but</span>
               <span class="block text-teal-800/80 xl:inline">translucent</span>
             </h1>
-            <p class="mt-3 max-w-md mx-auto text-base text-teal-50 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            <p
+              class="
+                mt-3
+                py-1
+                max-w-md
+                mx-auto
+                text-base text-teal-50
+                rounded-lg
+                sm:text-lg
+                md:mt-5 md:text-xl md:max-w-3xl
+                bg-teal-400/75
+                md:bg-transparent
+              "
+            >
               Flōt lets you place a website on top of other windows, but allows you to see through to the content
               underneath. The <span class="italic">perfect</span> amount of distraction.
             </p>
@@ -107,6 +120,7 @@
                       text-white
                       hover:bg-teal-700
                       focus:outline-none focus:bg-teal-700
+                      select-none
                       md:py-4 md:text-lg md:px-10
                     "
                   >
@@ -139,6 +153,7 @@
                       text-white
                       hover:bg-teal-700
                       focus:outline-none focus:bg-teal-700
+                      select-none
                       md:py-4 md:text-lg md:px-10
                     "
                   >
@@ -171,6 +186,7 @@
                       text-white
                       hover:bg-teal-700
                       focus:outline-none focus:bg-teal-700
+                      select-none
                       md:py-4 md:text-lg md:px-10
                     "
                   >
@@ -209,6 +225,25 @@
         alt=""
         class="max-w-sm md:max-w-5xl inline-block object-contain animate-flot pointer-events-none select-none"
       />
+    </div>
+    <div class="w-full px-2 fixed z-20 bottom-2 left-0 flex items-center justify-center">
+      <p class="px-4 py-2 bg-teal-900/75 text-teal-50 rounded-lg select-none">
+        Hey there! Please check out the
+        <a
+          href="https://github.com/andrewbrey/flot"
+          class="
+            text-teal-200
+            hover:text-teal-50 hover:underline
+            focus:outline-none focus:underline focus:text-teal-50
+            transition-colors
+          "
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <span class="font-bold select-none">GitHub repository</span>
+        </a>
+        for some important notes about usage of Flōt.
+      </p>
     </div>
     <script type="module">
       fetch('https://api.github.com/repos/andrewbrey/flot/releases/latest')
