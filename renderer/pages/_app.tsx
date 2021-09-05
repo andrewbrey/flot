@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         switch (key) {
           case 'location':
             if (typeof window !== 'undefined') localStorage.setItem('flot-last-url', msg);
+            useStore.setState({ url: msg });
             break;
           case 'active':
             useStore.setState({ childActive: msg });

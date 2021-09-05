@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { prepareDailyMotionUrl, prepareTwitchUrl, prepareVimeoUrl, prepareYoutubeUrl } from './util/magic-urls';
+import { prepareDailyMotionUrl, prepareVimeoUrl, prepareYoutubeUrl } from './util/magic-urls';
 
 interface FlotState {
   url: string;
@@ -74,7 +74,6 @@ function preprocessURL(target: string) {
 
   target = prepareYoutubeUrl(target);
   target = prepareVimeoUrl(target);
-  target = prepareTwitchUrl(target);
   target = prepareDailyMotionUrl(target);
 
   return new URL(target);

@@ -56,21 +56,6 @@ export function prepareVimeoUrl(target: string) {
   return `https://player.vimeo.com/video/${videoId}?${queryParams}`;
 }
 
-export function prepareTwitchUrl(target: string) {
-  const asURL = new URL(target);
-
-  if (!asURL.host.includes('twitch.tv')) {
-    return target;
-  }
-
-  const queryParams = asURL.searchParams || {};
-
-  queryParams.set('channel', asURL.pathname.substring(1));
-  queryParams.set('parent', 'localhost'); // TODO, this is a required parameter but it might not be possible to fake
-
-  return `https://player.twitch.tv?${queryParams}`;
-}
-
 export function prepareDailyMotionUrl(target: string) {
   const normalized = target.replace(/^http(s)?:\/\/dai\.ly\//, 'http://www.dailymotion.com/video/');
 

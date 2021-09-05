@@ -2,6 +2,7 @@ import { app, BrowserWindow, webFrameMain } from 'electron';
 import { ipcMain as ipc } from 'electron-better-ipc';
 import serve from 'electron-serve';
 import { readFile } from 'fs/promises';
+import { omitBy, toLower } from 'lodash';
 import fetch from 'node-fetch';
 import { join } from 'path';
 import { createWindow } from './helpers';
@@ -64,6 +65,17 @@ if (isProd) {
     icon: join(__dirname, 'images', 'logo', '256x256.png'),
     alwaysOnTop: true,
     hasShadow: false,
+    webPreferences: {
+      webSecurity: false,
+    },
+  });
+
+  mainWindow.webContents.session.webRequest.onHeadersReceived({ urls: ['*://*/*'] }, (details, callback) => {
+    const responseHeaders = omitBy({ ...(details?.responseHeaders ?? {}) }, (value, key) =>
+      ['x-frame-options', 'content-security-policy'].includes(toLower(key))
+    );
+
+    callback({ cancel: false, responseHeaders });
   });
 
   mainWindow.setVisibleOnAllWorkspaces(true);
@@ -111,6 +123,17 @@ if (isProd) {
     }
   );
 
+  mainWindow.webContents.on('did-navigate-in-page', async (event, url, isMainFrame, frameProcessId, frameRoutingId) => {
+    if (isMainFrame) return;
+    if (url === 'about:blank') return;
+
+    const frame = webFrameMain.fromId(frameProcessId, frameRoutingId);
+
+    if (frame) {
+      frame.executeJavaScript(`parent.postMessage({key: 'location', msg: location.href}, "*")`);
+    }
+  });
+
   if (isProd) {
     await mainWindow.loadURL('app://./index.html');
 
@@ -140,5 +163,10 @@ ipc.answerRenderer('please-quit', () => app.quit());
 app.on('window-all-closed', () => app.quit());
 
 function getFlotEmbed() {
-  return (mainWindow?.webContents.mainFrame.frames ?? []).find((f) => f.name === 'flot-embed');
+  const frames = mainWindow?.webContents.mainFrame.frames ?? [];
+
+  // Some websites seem to cause the embed frame to be renamed...not sure how, it's
+  // supposed to be a readonly property, but ah well, if this happens, just try the
+  // using the first frame
+  return frames.find((f) => f.name === 'flot-embed') ?? frames[0];
 }
