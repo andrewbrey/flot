@@ -30,7 +30,7 @@ Download the latest version of Flōt for your operating system from
    bypasses this restriction by disabling certain web security mechanisms. This
    should be perfectly safe if you're just using it to view a video or content
    site, but you should exercise caution by not using Flōt as a general purpose
-   web browser. Those protections are within your browser are important to
+   web browser. Those protections within your browser are important to
    ensure you don't have private or sensitive information stolen.
 
 > TLDR; Flōt is mostly a fun toy, and should not be used like a regular browser.
