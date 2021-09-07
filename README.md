@@ -30,11 +30,12 @@ Download the latest version of Flōt for your operating system from
    bypasses this restriction by disabling certain web security mechanisms. This
    should be perfectly safe if you're just using it to view a video or content
    site, but you should exercise caution by not using Flōt as a general purpose
-   web browser. Those protections within your browser are important to
-   ensure you don't have private or sensitive information stolen.
+   web browser. Those protections within your browser are important to ensure
+   you don't have private or sensitive information stolen.
 
 > TLDR; Flōt is mostly a fun toy, and should not be used like a regular browser.
-> Don't do your banking in a Flōt window.
+> Don't do your banking in a Flōt window. Don't enter passwords in a Flōt
+> window. Treat Flōt like it is a "read only" viewer of _public_ web pages.
 
 2. In order to distrubute and/or auto-update an app on Windows and Mac,
    developers need to pay pretty large fees to become part of the respective
