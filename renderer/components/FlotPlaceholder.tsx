@@ -19,7 +19,7 @@ function FlotPlaceholder() {
               <p className="pt-6 pb-4 text-sm text-teal-500">
                 <span className="font-black">Note:</span> some websites can't be loaded with Flōt as the website itself
                 must permit being displayed as embedded content. If a page fails to load, check if the site specifies an
-                "embed" version of the address. This will be done for you automatically for some sites, such as YouTube.
+                "embed" version of the address.
               </p>
             </div>
           </div>
