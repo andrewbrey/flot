@@ -69,6 +69,7 @@ Top feature: It's simple and works like a charm ❤️
 - Stays on top of other windows and out of your way
 - Optional "detached" mode which will let mouse clicks "pass through" Flōt to
   the window below
+- Built-in basic ad and tracker blocking
 - Simple and clean design with just the cutest little logo drawn by my wife
 
 # Screenshots
