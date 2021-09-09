@@ -1,4 +1,4 @@
-import { app, BrowserWindow, webFrameMain } from 'electron';
+import { app, BrowserWindow, globalShortcut, webFrameMain } from 'electron';
 import { ipcMain as ipc } from 'electron-better-ipc';
 import serve from 'electron-serve';
 import { readFile } from 'fs/promises';
@@ -15,6 +15,7 @@ const devURL = `http://localhost:${port}`;
 
 let mainWindow: BrowserWindow | undefined;
 let experimentalVideoCSS = false;
+let forceDetachKeybindActive = false;
 const videoCSSOnScript = 'document.documentElement.classList.add("flot-video");';
 const videoCSSOffScript = 'document.documentElement.classList.remove("flot-video");';
 
@@ -33,6 +34,11 @@ if (isProd) {
 
 (async () => {
   await app.whenReady();
+
+  globalShortcut.register('CmdOrCtrl+Alt+I', () => {
+    mainWindow?.setIgnoreMouseEvents(!forceDetachKeybindActive);
+    forceDetachKeybindActive = !forceDetachKeybindActive;
+  });
 
   const embedCssFilePromise = isProd
     ? readFile(join(__dirname, 'css', 'embed.css'), { encoding: 'utf8' })
@@ -157,10 +163,13 @@ ipc.answerRenderer('please-disable-video-css', () => {
   experimentalVideoCSS = false;
 });
 ipc.answerRenderer('please-detach', () => mainWindow?.setIgnoreMouseEvents(true));
-ipc.answerRenderer('please-attach', () => mainWindow?.setIgnoreMouseEvents(false));
+ipc.answerRenderer('please-attach', () => {
+  if (!forceDetachKeybindActive) mainWindow?.setIgnoreMouseEvents(false);
+});
 ipc.answerRenderer('please-quit', () => app.quit());
 
 app.on('window-all-closed', () => app.quit());
+app.on('will-quit', () => globalShortcut.unregisterAll());
 
 function getFlotEmbed() {
   const frames = mainWindow?.webContents.mainFrame.frames ?? [];
