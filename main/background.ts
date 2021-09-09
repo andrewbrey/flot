@@ -2,10 +2,10 @@ import { app, BrowserWindow, globalShortcut, webFrameMain } from 'electron';
 import { ipcMain as ipc } from 'electron-better-ipc';
 import serve from 'electron-serve';
 import { readFile } from 'fs/promises';
-import { omitBy, toLower } from 'lodash';
 import fetch from 'node-fetch';
 import { join } from 'path';
 import { createWindow } from './helpers';
+import { omitSecurityHeadersAndBlockAds } from './helpers/web-requests';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 const isLinux = process.platform === 'linux';
@@ -29,8 +29,6 @@ if (isProd) {
 } else {
   app.setPath('userData', `${app.getPath('userData')} (development)`);
 }
-
-// TODO: https://github.com/th-ch/youtube-music/blob/master/plugins/adblocker/blocker.js
 
 (async () => {
   await app.whenReady();
@@ -76,13 +74,7 @@ if (isProd) {
     },
   });
 
-  mainWindow.webContents.session.webRequest.onHeadersReceived({ urls: ['*://*/*'] }, (details, callback) => {
-    const responseHeaders = omitBy({ ...(details?.responseHeaders ?? {}) }, (value, key) =>
-      ['x-frame-options', 'content-security-policy'].includes(toLower(key))
-    );
-
-    callback({ cancel: false, responseHeaders });
-  });
+  await omitSecurityHeadersAndBlockAds(mainWindow.webContents.session);
 
   mainWindow.setVisibleOnAllWorkspaces(true);
 
@@ -139,6 +131,8 @@ if (isProd) {
       frame.executeJavaScript(`parent.postMessage({key: 'location', msg: location.href}, "*")`);
     }
   });
+
+  mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
 
   if (isProd) {
     await mainWindow.loadURL('app://./index.html');
