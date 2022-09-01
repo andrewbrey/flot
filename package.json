@@ -58,6 +58,6 @@
     "typescript": "^4.8.2"
   },
   "browserslist": [
-    "Electron >= 13"
+    "Electron >= 20"
   ]
 }
