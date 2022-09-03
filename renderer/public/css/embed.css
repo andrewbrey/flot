@@ -67,7 +67,7 @@
 
 .flotapp.flot-video video::before,
 .flotapp.flot-video video::after {
-  content: '' !important;
+  content: "" !important;
   background: #000 !important;
 }
 

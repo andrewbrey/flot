@@ -1,5 +1,10 @@
-import { BrowserWindow, BrowserWindowConstructorOptions, Rectangle, screen } from 'electron';
-import Store from 'electron-store';
+import {
+  BrowserWindow,
+  BrowserWindowConstructorOptions,
+  Rectangle,
+  screen,
+} from "electron";
+import Store from "electron-store";
 
 interface WindowState {
   x: number;
@@ -8,10 +13,18 @@ interface WindowState {
   height: any;
 }
 
-export default (windowName: string, options: BrowserWindowConstructorOptions): BrowserWindow => {
-  const key = 'window-state';
+export default (
+  windowName: string,
+  options: BrowserWindowConstructorOptions
+): BrowserWindow => {
+  const key = "window-state";
   const name = `window-state-${windowName}`;
-  const defaultState: WindowState = { x: 0, y: 0, width: options.width ?? 600, height: options.height ?? 400 };
+  const defaultState: WindowState = {
+    x: 0,
+    y: 0,
+    width: options.width ?? 600,
+    height: options.height ?? 400,
+  };
   const store = new Store<WindowState>({
     name,
     defaults: { ...defaultState },
@@ -76,14 +89,13 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     ...state,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true,
       contextIsolation: false,
       ...options.webPreferences,
     },
   };
   win = new BrowserWindow(browserOptions);
 
-  win.on('close', saveState);
+  win.on("close", saveState);
 
   return win;
 };

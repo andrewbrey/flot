@@ -8,7 +8,7 @@
       "name": "Nextron: Main",
       "type": "node",
       "request": "attach",
-      "protocol": "inspector",
+      // "protocol": "inspector",
       "port": 9292,
       "skipFiles": ["<node_internals>/**"],
       "sourceMapPathOverrides": {
@@ -19,7 +19,7 @@
     },
     {
       "name": "Nextron: Renderer",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "attach",
       "port": 5858,
       "timeout": 10000,
