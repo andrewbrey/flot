@@ -1,12 +1,12 @@
-import cn from 'classnames';
-import Head from 'next/head';
-import React from 'react';
-import FlotBar from '../components/FlotBar';
-import FlotControls from '../components/FlotControls';
-import FlotEmbed from '../components/FlotEmbed';
-import { useStore } from '../store';
+import cn from "classnames";
+import Head from "next/head";
+import React from "react";
+import FlotBar from "../components/FlotBar";
+import FlotControls from "../components/FlotControls";
+import FlotEmbed from "../components/FlotEmbed";
+import { useStore } from "../store";
 
-const magicHeight = 'max-h-[calc(100%-0px)]';
+const magicHeight = "max-h-[calc(100%-0px)]";
 
 function PageHome() {
   const url = useStore((state) => state.url);
@@ -29,7 +29,10 @@ function PageHome() {
           <FlotControls />
         </section>
         <section
-          className={cn('flex-grow relative bg-teal-900/95 overflow-hidden', magicHeight)}
+          className={cn(
+            "flex-grow relative bg-teal-900/95 overflow-hidden",
+            magicHeight
+          )}
           style={{ opacity: url ? opacity : 1 }}
         >
           <FlotEmbed />

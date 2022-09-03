@@ -4,21 +4,21 @@
 
 @layer base {
   @font-face {
-    font-family: 'Work Sans';
+    font-family: "Work Sans";
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
-    font-named-instance: 'Regular';
-    src: url('/fonts/WorkSans.ttf?v=1.0') format('truetype');
+    font-named-instance: "Regular";
+    src: url("/fonts/WorkSans.ttf?v=1.0") format("truetype");
   }
 
   @font-face {
-    font-family: 'Work Sans';
+    font-family: "Work Sans";
     font-weight: 100 900;
     font-display: swap;
     font-style: italic;
-    font-named-instance: 'Italic';
-    src: url('/fonts/WorkSans-Italic.ttf?v=1.0') format('truetype');
+    font-named-instance: "Italic";
+    src: url("/fonts/WorkSans-Italic.ttf?v=1.0") format("truetype");
   }
 
   :root {
@@ -61,19 +61,19 @@
     @apply w-full h-full flex flex-col;
   }
 
-  input[type='range'] {
+  input[type="range"] {
     @apply appearance-none h-4 bg-transparent w-full my-2 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded;
   }
 
-  input[type='range']::-webkit-slider-runnable-track {
+  input[type="range"]::-webkit-slider-runnable-track {
     @apply w-full h-1 cursor-pointer bg-white rounded border border-black;
   }
 
-  input[type='range']::-webkit-slider-thumb {
+  input[type="range"]::-webkit-slider-thumb {
     @apply h-4 w-4 appearance-none bg-transparent border-0 rounded-2xl bg-teal-600 cursor-pointer -mt-1.5;
   }
 
-  input[type='range']:focus::-webkit-slider-runnable-track {
+  input[type="range"]:focus::-webkit-slider-runnable-track {
     @apply bg-white;
   }
 }

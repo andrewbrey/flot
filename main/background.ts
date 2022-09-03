@@ -2,7 +2,7 @@ import { app, BrowserWindow, globalShortcut, webFrameMain } from "electron";
 import { ipcMain as ipc } from "electron-better-ipc";
 import serve from "electron-serve";
 import { readFile } from "fs/promises";
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 import { join } from "path";
 import { createWindow } from "./helpers";
 import { omitSecurityHeadersAndBlockAds } from "./helpers/web-requests";

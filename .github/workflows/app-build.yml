@@ -5,7 +5,7 @@ on:
 
 defaults:
   run:
-    shell: 'bash'
+    shell: "bash"
 
 jobs:
   build:
@@ -15,11 +15,11 @@ jobs:
       matrix:
         include:
           - platform: linux
-            os: 'ubuntu-latest'
+            os: "ubuntu-latest"
           - platform: windows
-            os: 'windows-latest'
+            os: "windows-latest"
           - platform: mac
-            os: 'macos-latest'
+            os: "macos-latest"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2

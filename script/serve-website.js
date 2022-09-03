@@ -1,13 +1,13 @@
-const server = require('live-server');
-const path = require('path');
+const server = require("live-server");
+const path = require("path");
 
 const options = {
-  host: '0.0.0.0',
+  host: "0.0.0.0",
   port: 5500,
-  root: path.join(__dirname, '..', 'website'),
+  root: path.join(__dirname, "..", "website"),
   open: true,
-  file: 'index.html',
-  watch: path.join(__dirname, '..', 'website'),
+  file: "index.html",
+  watch: path.join(__dirname, "..", "website"),
   noCssInject: true,
 };
 
