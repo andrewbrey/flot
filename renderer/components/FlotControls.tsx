@@ -28,6 +28,12 @@ function FlotControls() {
   const [detach, setDetach] = React.useState(false);
   const [opacity, setOpacity] = React.useState(1);
 
+  React.useEffect(() => {
+    ipc
+      .callMain<string, boolean>("ask-video-css-enabled")
+      .then((videoHasFocus) => setFocusVideo(videoHasFocus));
+  }, []);
+
   React.useEffect(() => setOpacity(storeOpacity), [storeOpacity]);
 
   React.useEffect(() => {
@@ -260,7 +266,10 @@ function FlotControls() {
                           htmlFor="detach-mode-option"
                           className="ml-2 font-medium text-sm text-teal-300 select-none"
                         >
-                          Ignore clicks
+                          Ignore clicks{" "}
+                          <code className="tracking-tighter bg-teal-800 px-0.5 rounded italic">
+                            (ctrl+alt+i)
+                          </code>
                         </label>
                       </div>
                       <div className="text-sm">

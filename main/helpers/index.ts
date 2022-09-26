@@ -1,3 +1,4 @@
-import createWindow from './create-window';
+import createWindow from "./create-window";
+import getUserSettings from "./user-settings";
 
-export { createWindow };
+export { createWindow, getUserSettings };

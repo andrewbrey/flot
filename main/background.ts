@@ -1,10 +1,10 @@
+import fetch from "cross-fetch";
 import { app, BrowserWindow, globalShortcut, webFrameMain } from "electron";
 import { ipcMain as ipc } from "electron-better-ipc";
 import serve from "electron-serve";
 import { readFile } from "fs/promises";
-import fetch from "cross-fetch";
 import { join } from "path";
-import { createWindow } from "./helpers";
+import { createWindow, getUserSettings } from "./helpers";
 import { omitSecurityHeadersAndBlockAds } from "./helpers/web-requests";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
@@ -14,7 +14,8 @@ const port = process.argv[2];
 const devURL = `http://localhost:${port}`;
 
 let mainWindow: BrowserWindow | undefined;
-let experimentalVideoCSS = false;
+let userSettings = getUserSettings();
+let experimentalVideoCSS = userSettings.get("focusVideo", false);
 let forceDetachKeybindActive = false;
 const videoCSSOnScript =
   'document.documentElement.classList.add("flot-video");';
@@ -172,12 +173,15 @@ if (isProd) {
   }
 })();
 
+ipc.answerRenderer("ask-video-css-enabled", () => experimentalVideoCSS);
 ipc.answerRenderer("please-enable-video-css", () => {
   getFlotEmbed()?.executeJavaScript(videoCSSOnScript);
+  userSettings.set("focusVideo", true);
   experimentalVideoCSS = true;
 });
 ipc.answerRenderer("please-disable-video-css", () => {
   getFlotEmbed()?.executeJavaScript(videoCSSOffScript);
+  userSettings.set("focusVideo", false);
   experimentalVideoCSS = false;
 });
 ipc.answerRenderer("please-detach", () =>
