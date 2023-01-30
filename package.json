@@ -46,7 +46,7 @@
     "@types/react": "^18.0.27",
     "autoprefixer": "^10.4.13",
     "concurrently": "7.6.0",
-    "electron": "^22.1.0",
+    "electron": "^21.4.0",
     "electron-builder": "^23.6.0",
     "live-server": "1.2.2",
     "next": "^12.3.4",

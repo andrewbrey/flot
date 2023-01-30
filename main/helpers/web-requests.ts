@@ -1,19 +1,19 @@
 import { ElectronBlocker, fullLists, Request } from "@cliqz/adblocker-electron";
+import fetch from "cross-fetch";
 import { app, Session } from "electron";
 import { readFile, writeFile } from "fs/promises";
 import { omitBy, toLower } from "lodash";
-import fetch from "cross-fetch";
 import path from "path";
 
 const verbose = false; // change to true for request block logs
-const engineCacheVersion = 1;
+const engineCacheVersion = 2;
 
 // Extra sources thanks to https://github.com/th-ch/youtube-music/blob/master/plugins/adblocker/blocker.js
 const SOURCES = [
   "https://raw.githubusercontent.com/kbinani/adblock-youtube-ads/master/signed.txt",
   // uBlock Origin
   "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
-  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt",
+  "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt",
   // Fanboy Annoyances
   "https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt",
 ];
