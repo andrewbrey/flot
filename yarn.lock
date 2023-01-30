@@ -3098,7 +3098,7 @@ electron-updater@5.3.0:
     semver "^7.3.5"
     typed-emitter "^2.1.0"
 
-electron@^21.1.0:
+electron@^21.4.0:
   version "21.4.0"
   resolved "https://registry.yarnpkg.com/electron/-/electron-21.4.0.tgz#58c56e9ca7cebf45d9bfa1ea6d976400ffdc3cf0"
   integrity sha512-eko9hBBgJujF6er/LYhft1Os4NKaw/lcitF2HWjDsjw2B2aCxWLkw+gPslJVhW6OfusC/vzpvqi26XEgnVnnOg==
