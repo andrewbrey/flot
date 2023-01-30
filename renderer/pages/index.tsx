@@ -10,7 +10,7 @@ const magicHeight = "max-h-[calc(100%-0px)]";
 
 function PageHome() {
   const url = useStore((state) => state.url);
-  const title = `Flōt | ${url}`;
+  const title = url ? `Flōt | ${url}` : "Flōt";
   const storeOpacity = useStore((state) => state.opacity);
 
   const [opacity, setOpactity] = React.useState(1);
