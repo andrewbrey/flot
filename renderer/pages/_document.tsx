@@ -15,6 +15,11 @@ class FlotDocument extends Document {
   render() {
     return (
       <Html className="h-full w-full selection:bg-teal-700 selection:text-teal-100">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "var global = globalThis;",
+          }}
+        />
         <Head />
         <body className="h-full w-full">
           <Main />

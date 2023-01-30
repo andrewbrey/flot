@@ -22,10 +22,11 @@ const videoCSSOnScript =
 const videoCSSOffScript =
   'document.documentElement.classList.remove("flot-video");';
 
-if (isLinux) {
-  // https://github.com/electron/electron/issues/25153#issuecomment-843688494
-  app.commandLine.appendSwitch("use-gl", "desktop");
-}
+// TODO: can this be omitted finally?
+// if (isLinux) {
+//   // https://github.com/electron/electron/issues/25153#issuecomment-843688494
+//   app.commandLine.appendSwitch("use-gl", "desktop");
+// }
 
 if (isProd) {
   serve({ directory: "app" });
