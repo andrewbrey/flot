@@ -53,7 +53,8 @@ if (isProd) {
   await new Promise((r) => setTimeout(r, isLinux ? 750 : 350)); // required otherwise transparency won't work consistently cross-platform...
 
   mainWindow = createWindow("main", {
-    transparent: true,
+    // TODO: set to true
+    transparent: false,
     title: "Flōt",
     titleBarStyle: undefined,
     trafficLightPosition: undefined,

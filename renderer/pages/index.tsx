@@ -10,6 +10,7 @@ const magicHeight = "max-h-[calc(100%-0px)]";
 
 function PageHome() {
   const url = useStore((state) => state.url);
+  const title = `Flōt | ${url}`;
   const storeOpacity = useStore((state) => state.opacity);
 
   const [opacity, setOpactity] = React.useState(1);
@@ -19,7 +20,7 @@ function PageHome() {
   return (
     <React.Fragment>
       <Head>
-        <title>Flōt | {url}</title>
+        <title>{title}</title>
       </Head>
       <header className="h-8 relative">
         <FlotBar />
