@@ -9,38 +9,35 @@ import { useStore } from "../store";
 const magicHeight = "max-h-[calc(100%-0px)]";
 
 function PageHome() {
-  const url = useStore((state) => state.url);
-  const title = url ? `Flōt | ${url}` : "Flōt";
-  const storeOpacity = useStore((state) => state.opacity);
+	const url = useStore((state) => state.url);
+	const title = url ? `Flōt | ${url}` : "Flōt";
+	const storeOpacity = useStore((state) => state.opacity);
 
-  const [opacity, setOpactity] = React.useState(1);
+	const [opacity, setOpactity] = React.useState(1);
 
-  React.useEffect(() => setOpactity(storeOpacity), [storeOpacity]);
+	React.useEffect(() => setOpactity(storeOpacity), [storeOpacity]);
 
-  return (
-    <React.Fragment>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <header className="h-8 relative">
-        <FlotBar />
-      </header>
-      <main className="flex-grow flex flex-col overflow-auto">
-        <section className="w-full">
-          <FlotControls />
-        </section>
-        <section
-          className={cn(
-            "flex-grow relative bg-teal-900/95 overflow-hidden",
-            magicHeight
-          )}
-          style={{ opacity: url ? opacity : 1 }}
-        >
-          <FlotEmbed />
-        </section>
-      </main>
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			<Head>
+				<title>{title}</title>
+			</Head>
+			<header className="h-8 relative">
+				<FlotBar />
+			</header>
+			<main className="flex-grow flex flex-col overflow-auto">
+				<section className="w-full">
+					<FlotControls />
+				</section>
+				<section
+					className={cn("flex-grow relative bg-teal-900/95 overflow-hidden", magicHeight)}
+					style={{ opacity: url ? opacity : 1 }}
+				>
+					<FlotEmbed />
+				</section>
+			</main>
+		</React.Fragment>
+	);
 }
 
 export default PageHome;
