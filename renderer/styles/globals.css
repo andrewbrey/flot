@@ -3,84 +3,84 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Work Sans";
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: normal;
-    font-named-instance: "Regular";
-    src: url("/fonts/WorkSans.ttf?v=1.0") format("truetype");
-  }
+	@font-face {
+		font-family: "Work Sans";
+		font-weight: 100 900;
+		font-display: swap;
+		font-style: normal;
+		font-named-instance: "Regular";
+		src: url("/fonts/WorkSans.ttf?v=1.0") format("truetype");
+	}
 
-  @font-face {
-    font-family: "Work Sans";
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: italic;
-    font-named-instance: "Italic";
-    src: url("/fonts/WorkSans-Italic.ttf?v=1.0") format("truetype");
-  }
+	@font-face {
+		font-family: "Work Sans";
+		font-weight: 100 900;
+		font-display: swap;
+		font-style: italic;
+		font-named-instance: "Italic";
+		src: url("/fonts/WorkSans-Italic.ttf?v=1.0") format("truetype");
+	}
 
-  :root {
-    --flot-scrollbar-color: rgba(141, 141, 141, 0.75);
-    --flot-scrollbar-color-hover: rgb(172, 172, 172);
-    --flot-scrollbar-track-color: rgba(0, 0, 0, 0.25);
-    --flot-scrollbar-width: 10px;
-    --flot-scrollbar-border-width: 2px;
-    --flot-scrollbar-radius: 10px;
-  }
+	:root {
+		--flot-scrollbar-color: rgba(141, 141, 141, 0.75);
+		--flot-scrollbar-color-hover: rgb(172, 172, 172);
+		--flot-scrollbar-track-color: rgba(0, 0, 0, 0.25);
+		--flot-scrollbar-width: 10px;
+		--flot-scrollbar-border-width: 2px;
+		--flot-scrollbar-radius: 10px;
+	}
 
-  ::-webkit-scrollbar {
-    width: var(--flot-scrollbar-width) !important;
-  }
+	::-webkit-scrollbar {
+		width: var(--flot-scrollbar-width) !important;
+	}
 
-  ::-webkit-scrollbar:horizontal {
-    height: var(--flot-scrollbar-width) !important;
-  }
+	::-webkit-scrollbar:horizontal {
+		height: var(--flot-scrollbar-width) !important;
+	}
 
-  ::-webkit-scrollbar-track {
-    background-color: var(--flot-scrollbar-track-color) !important;
-  }
+	::-webkit-scrollbar-track {
+		background-color: var(--flot-scrollbar-track-color) !important;
+	}
 
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--flot-scrollbar-color) !important;
-    border-radius: var(--flot-scrollbar-radius) !important;
-    border: var(--flot-scrollbar-border-width) solid transparent !important;
-    background-clip: content-box !important;
-  }
+	::-webkit-scrollbar-thumb {
+		background-color: var(--flot-scrollbar-color) !important;
+		border-radius: var(--flot-scrollbar-radius) !important;
+		border: var(--flot-scrollbar-border-width) solid transparent !important;
+		background-clip: content-box !important;
+	}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--flot-scrollbar-color-hover) !important;
-  }
+	::-webkit-scrollbar-thumb:hover {
+		background-color: var(--flot-scrollbar-color-hover) !important;
+	}
 
-  ::-webkit-scrollbar-corner {
-    background-color: transparent !important;
-  }
+	::-webkit-scrollbar-corner {
+		background-color: transparent !important;
+	}
 
-  #__next {
-    @apply w-full h-full flex flex-col;
-  }
+	#__next {
+		@apply w-full h-full flex flex-col;
+	}
 
-  input[type="range"] {
-    @apply appearance-none h-4 bg-transparent w-full my-2 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded;
-  }
+	input[type="range"] {
+		@apply appearance-none h-4 bg-transparent w-full my-2 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded;
+	}
 
-  input[type="range"]::-webkit-slider-runnable-track {
-    @apply w-full h-1 cursor-pointer bg-white rounded border border-black;
-  }
+	input[type="range"]::-webkit-slider-runnable-track {
+		@apply w-full h-1 cursor-pointer bg-white rounded border border-black;
+	}
 
-  input[type="range"]::-webkit-slider-thumb {
-    @apply h-4 w-4 appearance-none bg-transparent border-0 rounded-2xl bg-teal-600 cursor-pointer -mt-1.5;
-  }
+	input[type="range"]::-webkit-slider-thumb {
+		@apply h-4 w-4 appearance-none bg-transparent border-0 rounded-2xl bg-teal-600 cursor-pointer -mt-1.5;
+	}
 
-  input[type="range"]:focus::-webkit-slider-runnable-track {
-    @apply bg-white;
-  }
+	input[type="range"]:focus::-webkit-slider-runnable-track {
+		@apply bg-white;
+	}
 }
 
 @layer utilities {
-  .draggable {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
-  }
+	.draggable {
+		-webkit-user-select: none;
+		-webkit-app-region: drag;
+	}
 }
