@@ -6,7 +6,7 @@ import { omitBy, toLower } from "lodash";
 import path from "path";
 
 const verbose = false; // change to true for request block logs
-const engineCacheVersion = 2;
+const engineCacheVersion = 3;
 
 // Extra sources thanks to https://github.com/th-ch/youtube-music/blob/master/src/plugins/adblocker/blocker.ts
 const SOURCES = [
