@@ -46,9 +46,11 @@ Download the latest version of Flōt for your operating system from
    developer". This is expected, and the instructions to get passed this will
    vary depending on your operating system.
 
-   For mac
-   [here is a support page to install an untrusted dmg
-   file](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
+   For Mac, you can follow [Apple's support page to open an untrusted app](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac), or remove the quarantine attribute via Terminal to bypass the warning entirely:
+   ```bash
+   xattr -d com.apple.quarantine /Applications/Flot.app
+   ```
+   *(Replace the path with the actual location of the app or DMG if different)*
 
    On Windows, you should just be able to use the presented prompt to open the
    app
